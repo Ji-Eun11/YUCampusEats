@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_image"
+        android:icon="@drawable/ic_image"
+    android:title="이미지" />
+
+    <item
+        android:id="@+id/navigation_price"
+        android:icon="@drawable/ic_price"
+    android:title="가격" />
+
+    <item
+        android:id="@+id/navigation_review"
+        android:icon="@drawable/ic_review"
+    android:title="리뷰" />
+
+</menu>
