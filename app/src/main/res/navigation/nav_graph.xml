@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/menuFragment">
+
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.yucampuseats.ui.MenuFragment"
+        android:label="오늘 메뉴" />
+
+    <fragment
+        android:id="@+id/weeklyMenuFragment"
+        android:name="com.example.yucampuseats.ui.WeeklyMenuFragment"
+        android:label="주간 메뉴" />
+
+    <fragment
+        android:id="@+id/reviewFragment"
+        android:name="com.example.yucampuseats.ui.ReviewFragment"
+        android:label="리뷰" />
+
+    <fragment
+        android:id="@+id/priceFragment"
+        android:name="com.example.yucampuseats.ui.PriceFragment"
+        android:label="가격" />
+
+    <fragment
+        android:id="@+id/imageFragment"
+        android:name="com.example.yucampuseats.ui.ImageFragment"
+        android:label="사진" />
+
+</navigation>
