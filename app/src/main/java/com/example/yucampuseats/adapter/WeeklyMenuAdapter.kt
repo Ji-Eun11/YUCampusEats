@@ -26,7 +26,7 @@ class WeeklyMenuAdapter(private val menus: List<WeeklyMenu>) :
 
     class WeeklyMenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val dateText: TextView = itemView.findViewById(R.id.textDate)
-        private val restaurantText: TextView = itemView.findViewById(R.id.textPlace)
+        private val restaurantText: TextView = itemView.findViewById(R.id.textRestaurant)
         private val categoryText: TextView = itemView.findViewById(R.id.textCategory)
         private val menuText: TextView = itemView.findViewById(R.id.textMenu)
 

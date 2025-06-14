@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMenus"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <TextView
-            android:id="@+id/tvTodayMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="오늘의 학식 메뉴"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-</ScrollView>
+        android:layout_height="match_parent"/>
+</FrameLayout>

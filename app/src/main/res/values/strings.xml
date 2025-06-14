@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">YUCAMPUSEATS</string>
+
+    <string-array name="restaurant_names">
+        <item>전체 보기</item>
+        <item>학생회관 식당</item>
+        <item>인문계 교직원 식당</item>
+        <item>자연계 학생식당</item>
+    </string-array>
 </resources>

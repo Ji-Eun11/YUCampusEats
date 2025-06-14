@@ -5,31 +5,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.yucampuseats.databinding.FragmentMenuBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.yucampuseats.R
+import com.example.yucampuseats.data.MenuData
+import com.example.yucampuseats.model.WeeklyMenu
 
 class MenuFragment : Fragment() {
 
-    private var _binding: FragmentMenuBinding? = null
-    private val binding get() = _binding!!
-
-    // 예시 오늘 메뉴
-    private val todayMenuText = "학생회관 식당: 김치찌개, 밥, 계란찜\n자연계 학생식당: 짜장면, 탕수육"
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var menuAdapter: MenuAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentMenuBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_menu, container, false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.tvTodayMenu.text = todayMenuText
-    }
+        // ✅ XML에 정의된 ID에 맞게 수정
+        recyclerView = view.findViewById(R.id.recyclerViewMenus)
+        recyclerView.layoutManager = LinearLayoutManager(context)
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        // 예시 데이터 로드
+        val menus: List<WeeklyMenu> = MenuData.menuList
+
+        menuAdapter = MenuAdapter(menus)
+        recyclerView.adapter = menuAdapter
+
+        return view
     }
 }
