@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.yucampuseats.ui.HumanitiesStaffFragment
 import com.example.yucampuseats.ui.ReviewFragment
 import com.example.yucampuseats.ui.StudentHallFragment
+import com.example.yucampuseats.model.ReviewStorage
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,6 +17,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        ReviewStorage.init(this)
+
         setContentView(R.layout.activity_main)
 
         btnStudentHall = findViewById(R.id.btnStudentHall)

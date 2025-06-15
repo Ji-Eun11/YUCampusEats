@@ -41,19 +41,5 @@
         android:visibility="gone"
         android:src="@drawable/placeholder_image" />
 
-    <!-- 댓글/리뷰 텍스트 -->
-    <TextView
-        android:id="@+id/textComment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="댓글 내용"
-        android:paddingTop="8dp"
-        android:textSize="14sp"/>
-
-    <Button
-        android:id="@+id/btnWriteReview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="리뷰 작성하기" />
 
 </LinearLayout>

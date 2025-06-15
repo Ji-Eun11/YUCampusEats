@@ -16,8 +16,8 @@ class ReviewAdapter(private val reviewList: List<Review>) :
 
     class ReviewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val ratingBar: RatingBar = itemView.findViewById(R.id.itemRatingBar)
-        val contentText: TextView = itemView.findViewById(R.id.itemReviewText)
-        val imageView: ImageView = itemView.findViewById(R.id.itemReviewImage)
+        val reviewText: TextView = itemView.findViewById(R.id.itemReviewText)
+        val reviewImage: ImageView = itemView.findViewById(R.id.itemReviewImage)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
@@ -29,11 +29,11 @@ class ReviewAdapter(private val reviewList: List<Review>) :
     override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
         val review = reviewList[position]
         holder.ratingBar.rating = review.rating
-        holder.contentText.text = review.commentText ?: ""
+        holder.reviewText.text = review.commentText ?: ""
         if (review.imageUri != null) {
-            holder.imageView.setImageURI(Uri.parse(review.imageUri))
+            holder.reviewImage.setImageURI(Uri.parse(review.imageUri))
         } else {
-            holder.imageView.setImageResource(R.drawable.placeholder_image) // 기본 이미지
+            holder.reviewImage.setImageResource(R.drawable.placeholder_image) // 기본 이미지
         }
     }
 
