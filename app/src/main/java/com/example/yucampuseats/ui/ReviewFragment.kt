@@ -1,57 +1,61 @@
 package com.example.yucampuseats.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
+import android.view.*
+import android.widget.*
 import androidx.fragment.app.Fragment
-import com.example.yucampuseats.databinding.FragmentReviewBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.yucampuseats.R
 import com.example.yucampuseats.model.Review
+import com.example.yucampuseats.model.ReviewStorage
 
-class ReviewFragment : Fragment() {
+class ReviewFragment : Fragment(R.layout.fragment_review) {
 
-    private var _binding: FragmentReviewBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: ReviewAdapter
+    private lateinit var btnWriteReview: Button
 
-    // 임시 저장소(실제로는 DB 또는 서버에 저장)
-    private val reviewList = mutableListOf<Review>()
+    // 식당 및 메뉴 이름 설정 (임시값, 실제 앱에선 인텐트나 번들로 전달받기)
+    private val restaurantName = "학생회관 식당"
+    private val menuName = "제육덮밥"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentReviewBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_review, container, false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        recyclerView = view.findViewById(R.id.recyclerViewReviews)
+        btnWriteReview = view.findViewById(R.id.btnWriteReview)
 
-        binding.btnSubmitReview.setOnClickListener {
-            val userName = binding.etUserName.text.toString().trim()
-            val comment = binding.etReview.text.toString().trim()
-            val rating = binding.ratingBar.rating
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        adapter = ReviewAdapter(emptyList())
+        recyclerView.adapter = adapter
 
-            if (userName.isEmpty() || comment.isEmpty()) {
-                Toast.makeText(requireContext(), "이름과 후기를 입력해주세요.", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            val review = Review(userName, rating, comment)
-            reviewList.add(review)
-
-            Toast.makeText(requireContext(), "리뷰가 등록되었습니다.", Toast.LENGTH_SHORT).show()
-
-// 입력창 초기화
-            binding.etUserName.text.clear()
-            binding.etReview.text.clear()
-            binding.ratingBar.rating = 0f
+        // 버튼 클릭 시 WriteReviewFragment로 이동
+        btnWriteReview.setOnClickListener {
+            val writeFragment = WriteReviewFragment.newInstance(restaurantName, menuName)
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, writeFragment)  // ID 이름을 fragmentContainer로 수정
+                .addToBackStack(null)
+                .commit()
         }
+
+        return view
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onResume() {
+        super.onResume()
+        loadReviews()
+    }
+
+    private fun loadReviews() {
+
+        val allReviews = ReviewStorage.getAllReviews()
+        val filteredReviews = allReviews.filter {
+            it.restaurantName == restaurantName && it.menuName == menuName
+        }
+        adapter.updateList(filteredReviews)
     }
 }

@@ -1,7 +1,9 @@
 package com.example.yucampuseats.model
 
 data class Review(
-    val userName: String,
+    val restaurantName: String,
+    val menuName: String,
     val rating: Float,
-    val comment: String
+    val commentText: String,
+    val imageUri: String? = null
 )

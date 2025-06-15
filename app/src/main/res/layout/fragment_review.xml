@@ -1,38 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:padding="16dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewReviews"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-        <EditText
-            android:id="@+id/etUserName"
-            android:hint="이름"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btnWriteReview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="리뷰 쓰기" />
 
-        <EditText
-            android:id="@+id/etReview"
-            android:hint="후기를 입력하세요"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <RatingBar
-            android:id="@+id/ratingBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:numStars="5"
-            android:stepSize="1.0" />
-
-        <Button
-            android:id="@+id/btnSubmitReview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="등록" />
-
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>

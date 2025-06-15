@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- 식당 이름 -->
+    <TextView
+        android:id="@+id/textRestaurantName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="식당 이름"
+        android:textStyle="bold"
+        android:textSize="16sp"/>
+
+    <!-- 별점 표시 -->
+    <RatingBar
+        android:id="@+id/itemRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1.0"
+        android:isIndicator="true" />
+
+    <!-- 리뷰 텍스트 -->
+    <TextView
+        android:id="@+id/itemReviewText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:text="리뷰 내용" />
+
+    <!-- 리뷰 이미지 -->
+    <ImageView
+        android:id="@+id/itemReviewImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        android:src="@drawable/placeholder_image" />
+
+    <!-- 댓글/리뷰 텍스트 -->
+    <TextView
+        android:id="@+id/textComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="댓글 내용"
+        android:paddingTop="8dp"
+        android:textSize="14sp"/>
+
+    <Button
+        android:id="@+id/btnWriteReview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="리뷰 작성하기" />
+
+</LinearLayout>
